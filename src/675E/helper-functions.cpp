@@ -103,57 +103,44 @@ int double_shoot_function() {
 // Triple Shoot Function
 int triple_shoot_function() {
   int triple_shoot_timer = 0;
+  indexer_pneum.set_value(true);
+  pros::delay(triple_shoot_timer + 200);
   indexer_pneum.set_value(false);
   pros::delay(triple_shoot_timer + 500);
   indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 1000);
+  pros::delay(triple_shoot_timer + 200);
   indexer_pneum.set_value(false);
   pros::delay(triple_shoot_timer + 500);
   indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 1000);
+  pros::delay(triple_shoot_timer + 200);
   indexer_pneum.set_value(false);
   pros::delay(triple_shoot_timer + 500);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 1000);
   return triple_shoot_timer;
 }
 
 // Triple Bang Bang Function
-void triple_bang_bang_function() {
-  int triple_shoot_timer = 0;
+int triple_high_shoot_function() {
   flywheel_high();
-  pros::delay(800);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 100);
-  indexer_pneum.set_value(false);
-  pros::delay(triple_shoot_timer + 100);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 100);
-  indexer_pneum.set_value(false);
-  pros::delay(triple_shoot_timer + 100);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 100);
-  indexer_pneum.set_value(false);
-  pros::delay(triple_shoot_timer + 100);
+  pros::delay(1000);
+  triple_shoot_function();
   flywheel_stop();
+  return is_flywheel_running;
 }
-void triple_bang_function() {
-  int triple_shoot_timer = 0;
+// Triple Bang Bang Bang Function
+int triple_ultra_high__shoot_function() {
+  flywheel_ultra_high();
+  pros::delay(1000);
+  triple_shoot_function();
+  flywheel_stop();
+  return is_flywheel_running;
+}
+// Triple Bang
+int triple_low_shoot_function() {
   flywheel_low();
   pros::delay(1000);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 500);
-  indexer_pneum.set_value(false);
-  pros::delay(triple_shoot_timer + 1000);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 500);
-  indexer_pneum.set_value(false);
-  pros::delay(triple_shoot_timer + 1000);
-  indexer_pneum.set_value(true);
-  pros::delay(triple_shoot_timer + 500);
-  indexer_pneum.set_value(false);
-  pros::delay(triple_shoot_timer + 1000);
+  triple_shoot_function();
   flywheel_stop();
+  return is_flywheel_running;
 }
 // Spin to Red Function - Spin the roller to the red side using optical
 int spin_to_red_function() {

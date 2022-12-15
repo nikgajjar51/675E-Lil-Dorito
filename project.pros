@@ -1,7 +1,7 @@
 {
   "py/object": "pros.conductor.project.Project",
   "py/state": {
-    "project_name": "Spicy Cheeto",
+    "project_name": "Dorito",
     "target": "v5",
     "templates": {
       "EZ-Template": {
@@ -188,7 +188,9 @@
       }
     },
     "upload_options": {
-      "icon": "clawbot"
+      "icon": "pizza",
+      "description": "Tiny Chip",
+      "slot": 2
     }
   }
 }

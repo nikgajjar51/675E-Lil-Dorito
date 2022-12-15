@@ -120,7 +120,7 @@ void autonomous() {
  */
 void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
-  flywheel.set_brake_mode(MOTOR_BRAKE_COAST);
+  flywheel.set_brake_mode(MOTOR_BRAKE_BRAKE);
   intake.set_brake_mode(MOTOR_BRAKE_COAST);
   while (true) {
     chassis.arcade_standard(ez::SPLIT);

@@ -1,13 +1,13 @@
 #include "main.h"
-bool triple_shooter_toggle, drive_lock_toggle;
+bool drive_lock_toggle, manual_control_toggle;
 void flywheel_manual_control() {
   if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == 1 &&
       master.get_digital(pros::E_CONTROLLER_DIGITAL_R2) == 1) {
     indexer_pneum.set_value(false);
-  } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) ==1) {
-    triple_bang_bang_function();
+  } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R1) == 1) {
+
   } else if (master.get_digital(pros::E_CONTROLLER_DIGITAL_R2) == 1) {
-    triple_bang_function();
+
   } else {
     indexer_pneum.set_value(false);
     flywheel_stop();
@@ -52,5 +52,17 @@ int toggle_drive_lock() {
 void drive_lock_control() {
   if (master.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
     toggle_drive_lock();
+  }
+}
+
+int toggle_manual_control() {
+  if (manual_control_toggle) {
+    manual_control_toggle = !manual_control_toggle;
+    master.rumble("-");
+    return manual_control_toggle;
+  } else {
+    manual_control_toggle = !manual_control_toggle;
+    master.rumble(". .");
+    return manual_control_toggle;
   }
 }

@@ -115,37 +115,31 @@ void interfered_example() {
 }
 // Right Side Auton: 3 disks high goal
 void right_side_1() {
-  // Start the flywheel - Allow it to reach high speed in time
-  flywheel_high();
   // Go forward - Approach the disk
   chassis.set_drive_pid(18, drive_speed * high_speed_multiplier);
   chassis.wait_drive();
   // Start the intake
-  intake_in_fast();
+  intake_in_slow();
   // Go Forward - To start intaking
   chassis.set_drive_pid(15, drive_speed * high_speed_multiplier);
   chassis.wait_drive();
   // Turn - Towards the other 2 disks
   chassis.set_swing_pid(ez::LEFT_SWING, -45,
                         drive_speed * high_speed_multiplier);
-  // chassis.set_turn_pid(-45, drive_speed_high);
   chassis.wait_drive();
-  // Go Forward - At a lower speed to continue intaking without jamming
-  chassis.set_drive_pid(33, drive_speed * high_speed_multiplier);
+  // Go Forward - to continue intaking without jamming
+  chassis.set_drive_pid(40, drive_speed * high_speed_multiplier);
   chassis.wait_drive();
   // Turn - Towards the goal
   chassis.set_turn_pid(-135, drive_speed * high_speed_multiplier);
   chassis.wait_drive();
   // Go Forward - approach the low goal
-  chassis.set_drive_pid(-7, drive_speed * high_speed_multiplier);
+  chassis.set_drive_pid(-5, drive_speed * high_speed_multiplier);
   chassis.wait_drive();
   // Stop the intake
   intake_stop();
   // Shoot the 3 disks
-  // Wait - Make the disks are shot before stopping the flywheel
-  pros::delay(triple_shoot_function() + 500);
-  // Stop the flywheel
-  flywheel_stop();
+  triple_high_shoot_function();
 }
 // Right Side Auton: Rollers and 5 disks high goal
 void right_side_2() {
@@ -163,7 +157,7 @@ void right_side_2() {
   // Swing - Away from the roller to face the roller mech with the roller
   chassis.set_swing_pid(ez::LEFT_SWING, -75,
                         turn_speed * high_speed_multiplier);
-    chassis.wait_drive();
+  chassis.wait_drive();
   // Go Forward - Move towards the roller
   chassis.set_drive_pid(28, drive_speed * high_speed_multiplier);
   chassis.wait_drive();
@@ -235,6 +229,4 @@ void left_side_1() {
 }
 // Left Side Auton: Roller and 5 disks high goals
 void left_side_2() {}
-void play_it_safe(){
-  
-}
+void play_it_safe() {}
